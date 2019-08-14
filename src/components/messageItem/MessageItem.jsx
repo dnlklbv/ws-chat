@@ -13,7 +13,12 @@ export const MessageItem = (props) => (
       authorName={props.from}
       date={new Date(+props.time).toString().split(' ')[4].slice(0, 5)}
     >
-      <MessageText>{props.message}</MessageText>
+      <MessageText
+        style={{
+          background: '#eee',
+          borderRadius: '0.8rem'
+        }}
+      >{props.message}</MessageText>
     </Message>
   </Row>
 )
