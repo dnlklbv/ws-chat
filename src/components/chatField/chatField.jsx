@@ -1,6 +1,8 @@
 import React from 'react';
 import { MessageList } from '@livechat/ui-kit';
 
+import { MessageItem } from '../messageItem';
+
 const messages = [
   {
     from: 'Daniil',
@@ -30,5 +32,15 @@ const messages = [
 
 export const ChatField = () => (
   <MessageList>
+    {
+      messages.map((message) => (
+        <MessageItem
+          from={message.from}
+          message={message.message}
+          key={message.id}
+          time={message.time}
+        />
+      ))
+    }
   </MessageList>
 )
