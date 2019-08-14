@@ -5,6 +5,7 @@ import { Container } from '@material-ui/core';
 
 import { Header } from '../header';
 import { ChatField } from '../chatField';
+import { MessageField } from '../messageField';
 
 import './App.css';
 
@@ -13,6 +14,7 @@ export const App = () => (
     <Container maxWidth="xs" style={{padding: 0}}>
       <Header />
       <ChatField />
+      <MessageField />
     </Container>
   </ThemeProvider>
 );
