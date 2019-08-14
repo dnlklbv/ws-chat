@@ -11,7 +11,10 @@ import './App.css';
 
 export const App = () => (
   <ThemeProvider>
-    <Container maxWidth="xs" style={{padding: 0}}>
+    <Container
+      maxWidth="xs"
+      style={{padding: 0, height: '100vh'}}
+    >
       <Header />
       <ChatField />
       <MessageField />
