@@ -1,1 +1,3 @@
-export { ChatField } from './chatField';
+import ChatField from './ChatFieldContainer';
+
+export { ChatField };

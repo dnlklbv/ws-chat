@@ -10,7 +10,6 @@ const defaultState = {
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case ADD_MESSAGES:
-      console.log(state);
       return {
         ...state, messages: state.messages.concat(action.payload),
       };
