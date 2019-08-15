@@ -6,12 +6,13 @@ import { Container } from '@material-ui/core';
 
 import { Header } from '../header';
 import { AppLoader } from '../appLoader';
+import { LogInForm } from '../logInForm';
 import { ChatField } from '../chatField';
 import { MessageField } from '../messageField';
 
 import './App.css';
 
-export const App = ({ addMessages, updateWebSocketStatus, webSocketStatus }) => {
+export const App = ({ addMessages, updateWebSocketStatus, webSocketStatus, username }) => {
   const createWebSocket = () => {
     const webSocket = new WebSocket('ws://st-chat.shas.tel');
 
@@ -39,13 +40,13 @@ export const App = ({ addMessages, updateWebSocketStatus, webSocketStatus }) => 
       >
         <Header />
         {
-          webSocketStatus === 'closed'
-            ? <AppLoader />
-            : <>
-              <ChatField />
-              <MessageField />
-            </>}
-
+          username === '' ? <LogInForm />
+            : webSocketStatus === 'closed' ? <AppLoader />
+              : <>
+                <ChatField />
+                <MessageField />
+              </>
+        }
       </Container>
     </ThemeProvider>
   );
@@ -54,4 +55,5 @@ export const App = ({ addMessages, updateWebSocketStatus, webSocketStatus }) => 
 App.propTypes = {
   addMessages: PropTypes.func.isRequired,
   updateWebSocketStatus: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
 };

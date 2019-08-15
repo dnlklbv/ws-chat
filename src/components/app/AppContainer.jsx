@@ -11,16 +11,19 @@ const AppContainer = props => (
     addMessages={props.addMessagesConnect}
     updateWebSocketStatus={props.updateWebSocketStatusConnect}
     webSocketStatus={props.webSocketStatus}
+    username={props.username}
   />
 );
 
 AppContainer.propTypes = {
   addMessagesConnect: PropTypes.func.isRequired,
-  updateWebSocketStatus: PropTypes.func.isRequired,
+  updateWebSocketStatusConnect: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
   webSocketStatus: state.webSocketStatus,
+  username: state.username,
 });
 
 const mapDispatchToProps = {
