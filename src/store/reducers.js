@@ -1,11 +1,12 @@
 import {
-  ADD_MESSAGES, UPDATE_WEBSOCKET_STATUS,
+  ADD_MESSAGES, UPDATE_WEBSOCKET_STATUS, SET_USERNAME,
 } from './actions';
 
 
 const defaultState = {
   messages: [],
   webSocketStatus: 'closed',
+  username: localStorage.getItem('username') || '',
 };
 
 const reducer = (state = defaultState, action) => {
@@ -19,9 +20,9 @@ const reducer = (state = defaultState, action) => {
         ),
       };
     case UPDATE_WEBSOCKET_STATUS:
-      return {
-        ...state, webSocketStatus: action.payload,
-      };
+      return { ...state, webSocketStatus: action.payload, };
+    case SET_USERNAME:
+      return { ...state, username: action.payload, };
     default: return state;
   }
 };
