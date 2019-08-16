@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { ThemeProvider } from '@livechat/ui-kit';
@@ -12,7 +12,9 @@ import { MessageField } from '../messageField';
 
 import './App.css';
 
-export const App = ({ addMessages, updateWebSocketStatus, webSocketStatus, username }) => {
+export const App = ({ addMessages, clearMessages, updateWebSocketStatus, webSocketStatus, username, messagesToSend, clearMessagesToSend }) => {
+  const [webSocket, setWebSocket] = useState();
+
   const createWebSocket = () => {
     const webSocket = new WebSocket('ws://st-chat.shas.tel');
 
@@ -26,11 +28,25 @@ export const App = ({ addMessages, updateWebSocketStatus, webSocketStatus, usern
 
     webSocket.onclose = () => {
       updateWebSocketStatus('closed');
+      clearMessages();
       setTimeout(() => createWebSocket(), 1000);
     }
+
+    setWebSocket(webSocket);
   };
 
   useEffect(createWebSocket, []);
+
+  useEffect(() => {
+    if(webSocketStatus === 'closed' || !webSocket || !messagesToSend.length) return;
+    messagesToSend.forEach(message => {
+      webSocket.send(JSON.stringify({
+        from: username,
+        message,
+      }))
+    });
+    clearMessagesToSend();
+  }, [messagesToSend, webSocketStatus, username, webSocket, clearMessagesToSend]);
 
   return (
     <ThemeProvider>
@@ -56,4 +72,6 @@ App.propTypes = {
   addMessages: PropTypes.func.isRequired,
   updateWebSocketStatus: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
+  messagesToSend: PropTypes.arrayOf(PropTypes.string).isRequired,
+  clearMessagesToSend: PropTypes.func.isRequired,
 };
