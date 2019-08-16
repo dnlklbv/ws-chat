@@ -1,1 +1,3 @@
-export { MessageField } from './MessageField';
+import MessageField from './MessageFieldContainer';
+
+export { MessageField };
