@@ -22,6 +22,7 @@ const reducer = (state = defaultState, action) => {
     case UPDATE_WEBSOCKET_STATUS:
       return { ...state, webSocketStatus: action.payload, };
     case SET_USERNAME:
+      localStorage.setItem('username', action.payload);
       return { ...state, username: action.payload, };
     default: return state;
   }

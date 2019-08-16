@@ -1,1 +1,3 @@
-export { LogInForm } from './LogInForm';
+import LogInForm from './LogInFormContainer';
+
+export { LogInForm };

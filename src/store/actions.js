@@ -13,6 +13,6 @@ export const updateWebSocketStatus = status => ({
 });
 
 export const setUsername = username => ({
-  type: UPDATE_WEBSOCKET_STATUS,
+  type: SET_USERNAME,
   payload: username,
 });
