@@ -5,11 +5,13 @@ import { MessageList } from '@livechat/ui-kit';
 
 import { MessageItem } from '../messageItem';
 
-export const ChatField = props => (
+export const ChatField = ({messages, myUsername}) => (
   <MessageList>
     {
-      props.messages.map((message) => (
+      messages.map((message) => (
+
         <MessageItem
+          isMy={myUsername === message.from}
           from={message.from}
           message={message.message}
           key={message.id}
@@ -27,4 +29,5 @@ ChatField.propTypes = {
     id: PropTypes.string,
     message: PropTypes.string,
   })).isRequired,
+  myUsername: PropTypes.string.isRequired,
 };

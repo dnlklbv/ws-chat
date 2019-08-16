@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 import { ChatField } from './ChatField';
 
-const ChatFieldContainer = props => (
-  <ChatField messages={props.messages} />
+const ChatFieldContainer = ({ messages, username }) => (
+  <ChatField messages={messages} myUsername={username} />
 );
 
 ChatFieldContainer.propTypes = {
@@ -15,10 +15,12 @@ ChatFieldContainer.propTypes = {
     id: PropTypes.string,
     message: PropTypes.string,
   })).isRequired,
+  username: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
   messages: state.messages,
+  username: state.username,
 });
 
 export default connect(mapStateToProps)(ChatFieldContainer);

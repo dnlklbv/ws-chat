@@ -1,11 +1,8 @@
 import React from 'react';
-import { Row } from '@livechat/ui-kit';
-import { Avatar } from '@livechat/ui-kit';
-import { Message } from '@livechat/ui-kit';
-import { MessageText } from '@livechat/ui-kit';
+import { Row, Avatar, Message, MessageText } from '@livechat/ui-kit';
 
 export const MessageItem = (props) => (
-  <Row>
+  <Row reverse={props.isMy}>
     <Avatar
       imgUrl={`https://api.adorable.io/avatars/40/${props.from}`}
     />
@@ -21,4 +18,4 @@ export const MessageItem = (props) => (
       >{props.message}</MessageText>
     </Message>
   </Row>
-)
+);
