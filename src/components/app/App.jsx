@@ -15,11 +15,30 @@ import './App.css';
 export const App = ({ addMessages, clearMessages, updateWebSocketStatus, webSocketStatus, username, messagesToSend, clearMessagesToSend }) => {
   const [webSocket, setWebSocket] = useState();
 
+  const notify = messages => {
+    if(document.hasFocus()) return;
+
+    messages.forEach(message => {
+      if(message.from !== username) {
+        const n = new Notification(message.from, {
+          body: message.message,
+          icon: `https://api.adorable.io/avatars/40/${message.from}`,
+        });
+
+        n.addEventListener('click', () => {window.focus()})
+      }
+    })
+  }
+
+  useEffect(Notification.requestPermission, []);
+
   const createWebSocket = () => {
     const webSocket = new WebSocket('ws://st-chat.shas.tel');
 
     webSocket.onmessage = ({ data }) => {
-      addMessages(JSON.parse(data));
+      const messages = JSON.parse(data);
+      addMessages(messages);
+      notify(messages);
     };
 
     webSocket.onopen = () => {
