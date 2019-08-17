@@ -2,6 +2,7 @@ export const ADD_MESSAGES = 'ADD_MESSAGES';
 export const CLEAR_MESSAGES = 'CLEAR_MESSAGES';
 export const UPDATE_WEBSOCKET_STATUS = 'UPDATE_WEBSOCKET_STATUS';
 export const SET_USERNAME = 'SET_USERNAME';
+export const LOG_OUT = 'LOG_OUT';
 export const ADD_MESSAGE_TO_SEND = 'ADD_MESSAGE_TO_SEND';
 export const CLEAR_MESSAGES_TO_SEND = 'CLEAR_MESSAGES_TO_SEND';
 
@@ -22,6 +23,10 @@ export const updateWebSocketStatus = status => ({
 export const setUsername = username => ({
   type: SET_USERNAME,
   payload: username,
+});
+
+export const logOut = () => ({
+  type: LOG_OUT,
 });
 
 export const addMessageToSend = message => ({
