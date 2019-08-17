@@ -14,12 +14,8 @@ LogInFormContainer.propTypes = {
   setUsernameConnect: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state => ({
-  messages: state.messages,
-});
-
 const mapDispatchToProps = {
   setUsernameConnect: setUsername,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogInFormContainer);
+export default connect(null, mapDispatchToProps)(LogInFormContainer);
