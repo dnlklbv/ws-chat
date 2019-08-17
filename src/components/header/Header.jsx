@@ -8,7 +8,7 @@ export const Header = ({ logOut }) => (
     className="header"
     title="The Rolling Scopes Chat"
     rightIcons={[
-      <IconButton onClick={() => {logOut()}}>
+      <IconButton key='log out' onClick={() => {logOut()}}>
         <CloseIcon/>
       </IconButton>,
     ]}
