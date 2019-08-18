@@ -1,4 +1,7 @@
 import React from 'react';
+
+import anchorme from "anchorme";
+
 import { Row, Avatar, Message, MessageText } from '@livechat/ui-kit';
 
 export const MessageItem = (props) => (
@@ -18,12 +21,13 @@ export const MessageItem = (props) => (
         date={new Date(+props.time).toString().split(' ')[4].slice(0, 5)}
       >
         <MessageText
+          dangerouslySetInnerHTML={{ __html: anchorme(props.message, { truncate: 15 }) }}
           style={{
             background: '#eee',
             borderRadius: '0.8rem',
             maxWidth: '85%',
           }}
-        >{props.message}</MessageText>
+        />
       </Message>
     </div>
   </Row>
