@@ -33,7 +33,7 @@ export const App = ({ addMessages, clearMessages, updateWebSocketStatus, webSock
   useEffect(Notification.requestPermission, []);
 
   const createWebSocket = () => {
-    const webSocket = new WebSocket('ws://st-chat.shas.tel');
+    const webSocket = new WebSocket('wss://wssproxy.herokuapp.com/');
 
     webSocket.onmessage = ({ data }) => {
       const messages = JSON.parse(data);
