@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { useTranslation } from 'react-i18next';
+
 import { TextComposer, Row, TextInput, SendButton, IconButton, EmojiIcon } from '@livechat/ui-kit';
 import EmojiPicker from 'emoji-picker-react';
 import { Popover } from '@material-ui/core';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
 export const MessageField = ({ addMessageToSend }) => {
+  const { t } = useTranslation();
   const [message, changeMessage] = useState('');
 
   return (
@@ -17,7 +20,7 @@ export const MessageField = ({ addMessageToSend }) => {
       onSend={()=>{ addMessageToSend(message) }}
     >
       <Row align="center">
-        <TextInput />
+        <TextInput placeholder={t('Write a message...')} />
         <SendButton fit />
       </Row>
       <Row verticalAlign="center" justify="right">
