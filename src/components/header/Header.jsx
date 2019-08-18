@@ -3,10 +3,15 @@ import PropTypes from 'prop-types';
 
 import { TitleBar, IconButton, CloseIcon } from '@livechat/ui-kit';
 
+import { LanguageSelector } from '../languageSelector';
+
 export const Header = ({ logOut }) => (
   <TitleBar
     className="header"
     title="The Rolling Scopes Chat"
+    leftIcons={[
+      <LanguageSelector key="language sele" />
+    ]}
     rightIcons={[
       <IconButton key='log out' onClick={() => {logOut()}}>
         <CloseIcon/>
