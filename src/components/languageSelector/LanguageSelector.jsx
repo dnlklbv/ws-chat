@@ -8,8 +8,6 @@ export const LanguageSelector = () => {
   const { i18n } = useTranslation();
   const [ lng, setLng ] = useState(i18n.language);
 
-  console.log(i18n.language)
-
   return (
     <Select
       value={lng}
