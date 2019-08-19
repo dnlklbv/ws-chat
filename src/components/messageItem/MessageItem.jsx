@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import anchorme from "anchorme";
 
@@ -19,6 +20,7 @@ export const MessageItem = (props) => (
       <Message
         authorName={props.from}
         date={new Date(+props.time).toString().split(' ')[4].slice(0, 5)}
+        onDoubleClick={() => { props.setUserToReply(props.from) }}
       >
         <MessageText
           dangerouslySetInnerHTML={{ __html: anchorme(props.message, { truncate: 15 }) }}
@@ -32,3 +34,11 @@ export const MessageItem = (props) => (
     </div>
   </Row>
 );
+
+MessageItem.propTypes = {
+  isMy: PropTypes.bool.isRequired,
+  setUserToReply: PropTypes.func.isRequired,
+  from: PropTypes.string.isRequired,
+  time: PropTypes.number.isRequired,
+  message: PropTypes.string.isRequired,
+};

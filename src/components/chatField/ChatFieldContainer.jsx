@@ -2,10 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { setUserToReply } from '../../store/actions';
+
 import { ChatField } from './ChatField';
 
-const ChatFieldContainer = ({ messages, username }) => (
-  <ChatField messages={messages} myUsername={username} />
+const ChatFieldContainer = ({ messages, username, setUserToReplyConnect }) => (
+  <ChatField
+    messages={messages}
+    myUsername={username}
+    setUserToReply={setUserToReplyConnect}
+  />
 );
 
 ChatFieldContainer.propTypes = {
@@ -16,6 +22,7 @@ ChatFieldContainer.propTypes = {
     message: PropTypes.string,
   })).isRequired,
   username: PropTypes.string.isRequired,
+  setUserToReplyConnect: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -23,4 +30,8 @@ const mapStateToProps = state => ({
   username: state.username,
 });
 
-export default connect(mapStateToProps)(ChatFieldContainer);
+const mapDispatchToProps = {
+  setUserToReplyConnect: setUserToReply,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChatFieldContainer);

@@ -5,7 +5,7 @@ import { MessageList } from '@livechat/ui-kit';
 
 import { MessageItem } from '../messageItem';
 
-export const ChatField = ({messages, myUsername}) => (
+export const ChatField = ({ messages, myUsername, setUserToReply }) => (
   <MessageList>
     {
       messages.map((message) => (
@@ -16,6 +16,7 @@ export const ChatField = ({messages, myUsername}) => (
           message={message.message}
           key={message.id}
           time={message.time}
+          setUserToReply={setUserToReply}
         />
       ))
     }
@@ -30,4 +31,5 @@ ChatField.propTypes = {
     message: PropTypes.string,
   })).isRequired,
   myUsername: PropTypes.string.isRequired,
+  setUserToReply: PropTypes.func.isRequired,
 };
