@@ -5,6 +5,7 @@ export const SET_USERNAME = 'SET_USERNAME';
 export const LOG_OUT = 'LOG_OUT';
 export const ADD_MESSAGE_TO_SEND = 'ADD_MESSAGE_TO_SEND';
 export const CLEAR_MESSAGES_TO_SEND = 'CLEAR_MESSAGES_TO_SEND';
+export const SET_USER_TO_REPLY = 'SET_USER_TO_REPLY';
 
 export const addMessages = messages => ({
   type: ADD_MESSAGES,
@@ -37,3 +38,8 @@ export const addMessageToSend = message => ({
 export const clearMessagesToSend = () => ({
   type: CLEAR_MESSAGES_TO_SEND,
 });
+
+export const setUserToReply = username => ({
+  type: SET_USER_TO_REPLY,
+  payload: username,
+})

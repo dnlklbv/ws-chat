@@ -1,5 +1,5 @@
 import {
-  ADD_MESSAGES, CLEAR_MESSAGES, UPDATE_WEBSOCKET_STATUS, SET_USERNAME, ADD_MESSAGE_TO_SEND, CLEAR_MESSAGES_TO_SEND, LOG_OUT,
+  ADD_MESSAGES, CLEAR_MESSAGES, UPDATE_WEBSOCKET_STATUS, SET_USERNAME, ADD_MESSAGE_TO_SEND, CLEAR_MESSAGES_TO_SEND, LOG_OUT, SET_USER_TO_REPLY
 } from './actions';
 
 
@@ -8,6 +8,7 @@ const defaultState = {
   webSocketStatus: 'closed',
   username: localStorage.getItem('username') || '',
   messagesToSend: [],
+  userToReply: '',
 };
 
 const reducer = (state = defaultState, action) => {
@@ -34,6 +35,8 @@ const reducer = (state = defaultState, action) => {
       return { ...state, messagesToSend: [...state.messagesToSend, action.payload] };
     case CLEAR_MESSAGES_TO_SEND:
       return { ...state, messagesToSend: [], };
+    case SET_USER_TO_REPLY:
+      return { ...state, userToReply: action.payload, };
     default: return state;
   }
 };
