@@ -6,16 +6,21 @@ import { addMessageToSend } from '../../store/actions';
 
 import { MessageField } from './MessageField';
 
-const MessageFieldContainer = ({ addMessageToSendConnect }) => (
-  <MessageField addMessageToSend={addMessageToSendConnect} />
+const MessageFieldContainer = ({ addMessageToSendConnect, userToReply }) => (
+  <MessageField userToReply={userToReply} addMessageToSend={addMessageToSendConnect} />
 );
 
 MessageFieldContainer.propTypes = {
   addMessageToSendConnect: PropTypes.func.isRequired,
+  userToReply: PropTypes.string.isRequired,
 };
+
+const mapStateToProps = state => ({
+  userToReply: state.userToReply,
+})
 
 const mapDispatchToProps = {
   addMessageToSendConnect: addMessageToSend,
 };
 
-export default connect(null, mapDispatchToProps)(MessageFieldContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MessageFieldContainer);

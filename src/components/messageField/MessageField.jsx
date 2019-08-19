@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { useTranslation } from 'react-i18next';
@@ -8,9 +8,13 @@ import EmojiPicker from 'emoji-picker-react';
 import { Popover, TextField } from '@material-ui/core';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
-export const MessageField = ({ addMessageToSend }) => {
+export const MessageField = ({ addMessageToSend, userToReply }) => {
   const { t } = useTranslation();
   const [message, changeMessage] = useState('');
+
+  useEffect(() => {
+    if(userToReply) changeMessage(`${userToReply}, ${message}`);
+  }, [userToReply])
 
   const sendMessage = () => {
     addMessageToSend(message);
@@ -62,4 +66,5 @@ export const MessageField = ({ addMessageToSend }) => {
 
 MessageField.propTypes = {
   addMessageToSend: PropTypes.func.isRequired,
+  userToReply: PropTypes.string.isRequired,
 };
