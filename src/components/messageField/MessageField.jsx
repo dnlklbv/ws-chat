@@ -14,9 +14,11 @@ export const MessageField = ({ addMessageToSend, userToReply }) => {
 
   useEffect(() => {
     if(userToReply) changeMessage(`${userToReply}, ${message}`);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userToReply])
 
   const sendMessage = () => {
+    if(!message) return;
     addMessageToSend(message);
     changeMessage('');
   }
