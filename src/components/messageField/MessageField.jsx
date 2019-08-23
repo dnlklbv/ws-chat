@@ -23,6 +23,11 @@ export const MessageField = ({ addMessageToSend, userToReply }) => {
     changeMessage('');
   }
 
+  const addEmoji = (emojiName) => {
+    const hexNumber = parseInt(emojiName, 16);
+    changeMessage(message + String.fromCodePoint(hexNumber));
+  }
+
   return (
     <TextComposer
       style={{position: 'sticky', bottom: 0}}
@@ -56,7 +61,7 @@ export const MessageField = ({ addMessageToSend, userToReply }) => {
                   horizontal: 'right',
                 }}
               >
-                <EmojiPicker onEmojiClick={(emoji) => {console.log(`:${emoji}:`)}} />
+                <EmojiPicker onEmojiClick={addEmoji} />
               </Popover>
             </div>
           )}
