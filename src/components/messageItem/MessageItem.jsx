@@ -10,7 +10,7 @@ export const MessageItem = (props) => (
     reverse={props.isMy}
   >
     <Avatar
-      imgUrl={`https://api.adorable.io/avatars/40/${props.from}`}
+      imgUrl={props.hideMeta ? null : `https://api.adorable.io/avatars/40/${props.from}`}
     />
     <div
       style={{
@@ -18,7 +18,7 @@ export const MessageItem = (props) => (
       }}
     >
       <Message
-        authorName={props.from}
+        authorName={props.hideMeta ? null : props.from}
         date={new Date(+props.time).toString().split(' ')[4].slice(0, 5)}
         onDoubleClick={() => { props.setUserToReply(props.from) }}
       >

@@ -8,9 +8,10 @@ import { MessageItem } from '../messageItem';
 export const ChatField = ({ messages, myUsername, setUserToReply }) => (
   <MessageList>
     {
-      messages.map((message) => (
+      messages.map((message, index) => (
 
         <MessageItem
+          hideMeta={index < 1 ? null : message.from === messages[index - 1].from }
           isMy={myUsername === message.from}
           from={message.from}
           message={message.message}
