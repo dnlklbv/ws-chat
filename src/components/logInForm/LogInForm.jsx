@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 
+import { useTranslation } from 'react-i18next';
+
 import { TextField, Button } from '@material-ui/core';
 
 export const LogInForm = ({ setUsername }) => {
+  const { t } = useTranslation();
   const [usernameField, setUsernameField] = useState('');
 
   return (
@@ -16,7 +19,7 @@ export const LogInForm = ({ setUsername }) => {
         required
         fullWidth
         autoComplete="nickname"
-        placeholder="Enter username"
+        placeholder={t('Enter username')}
         autoFocus
         value={usernameField}
         onChange={(e) => {setUsernameField(e.target.value)}}
@@ -27,7 +30,7 @@ export const LogInForm = ({ setUsername }) => {
         variant="contained"
         color="primary"
       >
-        Log In
+        {t('Log In')}
       </Button>
     </form>
   )
