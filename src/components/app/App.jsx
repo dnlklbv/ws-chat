@@ -30,7 +30,11 @@ export const App = ({ addMessages, clearMessages, updateWebSocketStatus, webSock
     })
   }
 
-  useEffect(Notification.requestPermission, []);
+  const requestNorificationPermission = () => {
+    Notification.requestPermission();
+  }
+
+  useEffect(requestNorificationPermission, []);
 
   const createWebSocket = () => {
     const webSocket = new WebSocket('wss://wssproxy.herokuapp.com/');
