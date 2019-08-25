@@ -6,7 +6,7 @@ import { Select, MenuItem } from '@material-ui/core';
 
 export const LanguageSelector = () => {
   const { i18n } = useTranslation();
-  const [ lng, setLng ] = useState(i18n.language);
+  const [ lng, setLng ] = useState(i18n.language.slice(0, 2));
 
   return (
     <Select
