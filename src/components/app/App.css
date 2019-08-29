@@ -1,3 +1,15 @@
 body {
   margin: 0;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0;
+}
+
+.chat-field {
+  flex: 1;
 }

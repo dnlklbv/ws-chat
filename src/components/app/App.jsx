@@ -74,15 +74,15 @@ export const App = ({ addMessages, clearMessages, updateWebSocketStatus, webSock
   return (
     <ThemeProvider>
       <Container
-        maxWidth="xs"
-        style={{padding: 0, height: '100vh'}}
+        maxWidth="sm"
+        className="container"
       >
         <Header />
         {
           username === '' ? <LogInForm />
             : webSocketStatus === 'closed' ? <AppLoader />
               : <>
-                <ChatField />
+                <ChatField className="chat-field" />
                 <MessageField />
               </>
         }
