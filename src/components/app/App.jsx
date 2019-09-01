@@ -31,7 +31,9 @@ export const App = ({ addMessages, clearMessages, updateWebSocketStatus, webSock
   }
 
   const requestNorificationPermission = () => {
-    Notification.requestPermission();
+    if(window.Notification) {
+      Notification.requestPermission();
+    }
   }
 
   useEffect(requestNorificationPermission, []);
